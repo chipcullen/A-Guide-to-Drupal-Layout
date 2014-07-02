@@ -15,9 +15,11 @@
         max-height: 400px;
         margin: 20px auto;
         /*height: auto;*/
-        -webkit-transform: matrix(1, -0.4, 0, 1, 0, 0);
+        /*-webkit-transform: matrix(1, -0.4, 0, 1, 0, 0);
         -o-transform: matrix(1, -0.4, 0, 1, 0, 0);
-        transform: matrix(1, -0.4, 0, 1, 0, 0);
+        transform: matrix(1, -0.4, 0, 1, 0, 0);*/
+        -webkit-transform: rotateY(35deg) skewY(-10deg);
+
       }
       rect {
         fill: #ffffff;
@@ -49,7 +51,7 @@
         var thisVal = $(this).val();
 
         $('#drupal_layout').css({
-          '-webkit-transform': 'matrix(1, ' + thisVal + ', 0, 1, 0, 0)',
+          '-webkit-transform': 'rotateY(' + 35*thisVal + 'deg) skewY(-10deg)',
         });
       });
 
@@ -87,8 +89,8 @@
         <rect id="node" x="116.5" y="151.5" class="st0" width="232" height="324"/>
       </svg>
       <br><br><br><br><br><br><br><br>
-      <p><label for="rotator">Rotation:</label><input id="rotator" type="range" min="-1.0" max="1.0" value="0" step="0.01"/></p>
-      <p><label for="seperator">Separation:</label><input id="seperator" type="range" min="0" max="2.0" value="1" step="0.01"/></p>
+      <p><label for="rotator">Rotation:</label><input id="rotator" type="range" min="-2.0" max="3.0" value="1" step="0.01"/></p>
+      <p><label for="seperator">Separation:</label><input id="seperator" type="range" min="0" max="3.0" value="1" step="0.01"/></p>
 
     </main>
   </body>

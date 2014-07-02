@@ -9,27 +9,35 @@
       margin: 0;
       padding: 0;
     }
-    svg {
+    #drupal_layout {
       width: 100%;
       max-height: 400px;
-      margin: 0 auto;
+      margin: 20px auto;
       /*height: auto;*/
+      -webkit-transform: matrix(1, -0.4, 0, 1, 0, 0);
+      -o-transform: matrix(1, -0.4, 0, 1, 0, 0);
+      transform: matrix(1, -0.4, 0, 1, 0, 0);
     }
       rect {
-        fill: none;
+        fill: #ffffff;
         stroke: #000000;
       }
       #html {
         stroke-width: 2px;
         stroke: orange;
+        -webkit-transform: translateX(-60px);
       }
       #page {
         stroke: blue;
         stroke-width: 4px;
       }
+      #region rect {
+        -webkit-transform: translateX(60px);
+      }
       #node {
         stroke: red;
         stroke-width: 6px;
+        -webkit-transform: translateX(100px);
       }
     </style>
   </head>
@@ -42,11 +50,12 @@
       <svg  id="drupal_layout" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 643 567" >
         <rect id="html" x="9.5" y="9.5" class="st0" width="624" height="548"/>
         <rect id="page" x="49.5" y="78.5" class="st0" width="545" height="448"/>
-        <rect id="node" x="116.5" y="151.5" class="st0" width="232" height="324"/>
+
         <g id="region">
           <rect x="86" y="124" class="st1" width="291" height="375"/>
           <rect x="403" y="124" class="st1" width="156" height="375"/>
         </g>
+        <rect id="node" x="116.5" y="151.5" class="st0" width="232" height="324"/>
       </svg>
     </main>
   </body>

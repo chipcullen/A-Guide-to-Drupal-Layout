@@ -9,6 +9,9 @@
         margin: 0;
         padding: 0;
       }
+      html {
+        text-align: center;
+      }
       #drupal_layout {
         width: 100%;
         display: block;
@@ -21,26 +24,61 @@
         -webkit-transform: rotateY(35deg) skewY(-10deg);
 
       }
+
+      @-webkit-keyframes draw {
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+
       rect {
         fill: #ffffff;
         stroke: #000000;
+        stroke-linejoin: round;
+        stroke-dasharray: 3000;
+        stroke-dashoffset: 3000;
       }
+
       #html {
         stroke-width: 2px;
         stroke: orange;
         -webkit-transform: translateX(-60px);
+        -webkit-animation: draw 2s 1 forwards;
       }
+
+
+
       #page {
         stroke: blue;
         stroke-width: 4px;
+        -webkit-animation: draw 3s forwards;
       }
       #region rect {
         -webkit-transform: translateX(60px);
+        -webkit-animation: draw 4s forwards;
       }
       #node {
         stroke: red;
         stroke-width: 6px;
         -webkit-transform: translateX(100px);
+        -webkit-animation: draw 5s forwards;
+      }
+
+      #field {
+        stroke: purple;
+        stroke-width: 3px;
+        -webkit-transform: translateX(100px);
+        -webkit-animation: draw 6s forwards;
+      }
+
+      #text {
+        -webkit-transform: translateX(120px);
+      }
+      [id*="block"]{
+        stroke: green;
+        stroke-width: 3px;
+        -webkit-animation: draw 5s forwards;
+        -webkit-transform: translateX(120px);
       }
     </style>
   <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
@@ -65,8 +103,11 @@
         $('#region rect').css({
           '-webkit-transform': 'translateX(' + (60*thisVal) + 'px)',
         });
-        $('#node').css({
-          '-webkit-transform': 'translateX(' + (90*thisVal) + 'px)',
+        $('#node, #field').css({
+          '-webkit-transform': 'translateX(' + (100*thisVal) + 'px)',
+        });
+        $('#text, [id*="block"]').css({
+          '-webkit-transform': 'translateX(' + (120*thisVal) + 'px)',
         });
       });
     });
@@ -79,14 +120,24 @@
     </header>
     <main role="main">
       <svg  id="drupal_layout" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 643 567" >
-        <rect id="html" x="9.5" y="9.5" class="st0" width="624" height="548"/>
-        <rect id="page" x="49.5" y="78.5" class="st0" width="545" height="448"/>
+        <rect id="html" x="9.5" y="9.5"  width="624" height="548"/>
+        <rect id="page" x="49.5" y="78.5"  width="545" height="448"/>
 
         <g id="region">
           <rect x="86" y="124" class="st1" width="291" height="375"/>
           <rect x="403" y="124" class="st1" width="156" height="375"/>
         </g>
-        <rect id="node" x="116.5" y="151.5" class="st0" width="232" height="324"/>
+        <rect id="node" x="116.5" y="151.5"  width="232" height="324"/>
+        <rect id="field" x="128.5" y="171.5"  width="188" height="44"/>
+        <rect id="block" x="406.5" y="138.5"  width="126" height="88"/>
+        <rect id="block_1_" x="406.5" y="251.5"  width="126" height="88"/>
+        <rect id="block_2_" x="406.5" y="364.5"  width="126" height="88"/>
+        <g id="text">
+          <text transform="matrix(1 0 0 1 143 201)" class="st1 st2">Field Text</text>
+
+          <text transform="matrix(1 0 0 1 130 261.6196)"><tspan x="0" y="0" class="st1 st2">The quick brown </tspan><tspan x="0" y="26.4" class="st1 st2">fox jumped over </tspan><tspan x="0" y="52.8" class="st1 st2">the lazy dogs, who </tspan><tspan x="0" y="79.2" class="st1 st2">were wearing hand</tspan><tspan x="176.9" y="79.2" class="st1 st2">-</tspan><tspan x="0" y="105.6" class="st1 st2">gloves, and eating a </tspan><tspan x="0" y="132" class="st1 st2">zucchini.</tspan></text>
+        </g>
+
       </svg>
       <br><br><br><br><br><br><br><br>
       <p><label for="rotator">Rotation:</label><input id="rotator" type="range" min="-2.0" max="3.0" value="1" step="0.01"/></p>

@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>A Guide to Drupal Layout and Content Output</title>
     <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-    #drupal_layout {
-      width: 100%;
-      max-height: 400px;
-      margin: 20px auto;
-      /*height: auto;*/
-      -webkit-transform: matrix(1, -0.4, 0, 1, 0, 0);
-      -o-transform: matrix(1, -0.4, 0, 1, 0, 0);
-      transform: matrix(1, -0.4, 0, 1, 0, 0);
-    }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #drupal_layout {
+        width: 100%;
+        display: block;
+        max-height: 400px;
+        margin: 20px auto;
+        /*height: auto;*/
+        -webkit-transform: matrix(1, -0.4, 0, 1, 0, 0);
+        -o-transform: matrix(1, -0.4, 0, 1, 0, 0);
+        transform: matrix(1, -0.4, 0, 1, 0, 0);
+      }
       rect {
         fill: #ffffff;
         stroke: #000000;
@@ -40,6 +41,34 @@
         -webkit-transform: translateX(100px);
       }
     </style>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#rotator').change(function(){
+
+        var thisVal = $(this).val();
+
+        $('#drupal_layout').css({
+          '-webkit-transform': 'matrix(1, ' + thisVal + ', 0, 1, 0, 0)',
+        });
+      });
+
+      $('#seperator').change(function(){
+
+        var thisVal = $(this).val();
+
+        $('#html').css({
+          '-webkit-transform': 'translateX(-' + (60*thisVal) + 'px)',
+        });
+        $('#region rect').css({
+          '-webkit-transform': 'translateX(' + (60*thisVal) + 'px)',
+        });
+        $('#node').css({
+          '-webkit-transform': 'translateX(' + (90*thisVal) + 'px)',
+        });
+      });
+    });
+  </script>
   </head>
   <body>
     <header role="banner">
@@ -57,6 +86,10 @@
         </g>
         <rect id="node" x="116.5" y="151.5" class="st0" width="232" height="324"/>
       </svg>
+      <br><br><br><br><br><br><br><br>
+      <p><label for="rotator">Rotation:</label><input id="rotator" type="range" min="-1.0" max="1.0" value="0" step="0.01"/></p>
+      <p><label for="seperator">Separation:</label><input id="seperator" type="range" min="0" max="2.0" value="1" step="0.01"/></p>
+
     </main>
   </body>
 </html>

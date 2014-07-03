@@ -110,6 +110,10 @@
           '-webkit-transform': 'translateX(' + (120*thisVal) + 'px)',
         });
       });
+
+      $('#text a').click(function(){
+        console.log($(this).attr('xlink:href'));
+      });
     });
   </script>
   </head>
@@ -135,11 +139,16 @@
         <g id="text">
           <text transform="matrix(1 0 0 1 143 201)" class="st1 st2">Field Text</text>
 
-          <text transform="matrix(1 0 0 1 130 261.6196)"><tspan x="0" y="0" class="st1 st2">The quick brown </tspan><tspan x="0" y="26.4" class="st1 st2">fox jumped over </tspan><tspan x="0" y="52.8" class="st1 st2">the lazy dogs, who </tspan><tspan x="0" y="79.2" class="st1 st2">were wearing hand</tspan><tspan x="176.9" y="79.2" class="st1 st2">-</tspan><tspan x="0" y="105.6" class="st1 st2">gloves, and eating a </tspan><tspan x="0" y="132" class="st1 st2">zucchini.</tspan></text>
+          <text transform="matrix(1 0 0 1 130 261.6196)">
+            <a xlink:href="index.html#test" target="_top">
+            <tspan x="0" y="0" class="st1 st2">The quick brown </tspan><tspan x="0" y="26.4" class="st1 st2">fox jumped over </tspan><tspan x="0" y="52.8" class="st1 st2">the lazy dogs, who </tspan><tspan x="0" y="79.2" class="st1 st2">were wearing hand</tspan><tspan x="176.9" y="79.2" class="st1 st2">-</tspan><tspan x="0" y="105.6" class="st1 st2">gloves, and eating a </tspan><tspan x="0" y="132" class="st1 st2">zucchini.</tspan>
+            </a>
+          </text>
         </g>
 
       </svg>
       <br><br><br><br><br><br><br><br>
+      <a id="test" name="test"></a>
       <p><label for="rotator">Rotation:</label><input id="rotator" type="range" min="-2.0" max="3.0" value="1" step="0.01"/></p>
       <p><label for="seperator">Separation:</label><input id="seperator" type="range" min="0" max="3.0" value="1" step="0.01"/></p>
 

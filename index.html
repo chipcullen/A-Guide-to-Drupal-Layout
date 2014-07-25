@@ -150,8 +150,29 @@
       <br><br><br><br><br><br><br><br>
       <a id="test" name="test"></a>
       <p><label for="rotator">Rotation:</label><input id="rotator" type="range" min="-2.0" max="3.0" value="1" step="0.01"/></p>
-      <p><label for="seperator">Separation:</label><input id="seperator" type="range" min="0" max="3.0" value="1" step="0.01"/></p>
-
+      <p><label for="seperator">Separation:</label><input id="seperator" type="range" min="0" max="4.0" value="1" step="0.01"/></p>
+      <p>This is a basic, visual guide to how Drupal organizes it's output. Drupal differs from other templating structures (such as Wordpress) in that templates are <em>nested</em> instead of being chained in sequence. It helps to think of the content at any given URL is sort of like a Russian Doll, with <code>fields</code> being the atomic level piece of output.</p>
+      <ul class="panes">
+        <li class="pane html">
+          <div class="overview">
+            <h2>HTML</h2>
+            <p>The root HTML of all pages - this includes the inital <code>doctype</code> declaration, <code>head</code> and opening <code>body</code> tag. </p>
+          </div>
+          <div class="in-code">
+            <h2>How to manipulate it in code</h2>
+            <p>The template file that changes this level is <code>html.tpl.php</code>. Most base themes come with some variation of this file. If you wish to override it, you can copy that file into your child theme (usually in a <code>/templates</code> directory), clear caches, then change the file as needed.</p>
+            <p>If you are not using a base theme, you can copy the root system template file into your theme, and modify as you want. It's found at <code>/modules/system/html.tpl.php</code>. <strong>DO NOT</strong> edit that file directly, only <em>copy it</em> into your theme and work from there.</p>
+            <p>If you are comfortable with preprocess functions, you can manipulate this level with <code>THEMENAME_preprocess_html()</code>, which will reside in your theme's template.php file.</p>
+          </div>
+          <div class="in-contrib">
+            <h2>How to manipulate it using contributed modules</h2>
+            <p>There are several contributed modules that will affect elements found within the root <code>html</code> element. The most typical use case, though, is to change elements within the <code>head</code> tag.</p>
+            <ul>
+              <li>MetaTag - this is an indespensible module that allows for great flexibility in changing the meta information for a given URL. It allows you to change the <code>title</code> tag, set up patterns based on tokens for the <code>title</code>, as well as the various <code>meta</code> tags, such as <code>description</code>. It has several sub modules that also add <code>meta</code> information for social networks, such as Facebook's OpenGraph and Twitter Cards.</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
     </main>
   </body>
 </html>
